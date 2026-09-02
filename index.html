@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#bb001d">
+  <meta name="description" content="Participe da votação para escolher o nome da nova empresa de consulta veicular do Grupo Parcele Na Hora.">
+  <title>Escolha da Nova Marca | Grupo Parcele Na Hora</title>
+  <style>
+    :root{--red:#bb001d;--red-dark:#8d0016;--ink:#14161b;--muted:#68707c;--line:#e5e7eb;--surface:#fff;--bg:#f4f5f7;--green:#168447;--shadow:0 18px 55px rgba(18,21,26,.09)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,Segoe UI,Arial,sans-serif}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid rgba(187,0,29,.22);outline-offset:2px}.shell{width:min(1240px,calc(100% - 40px));margin:auto}
+    .topbar{background:#111318;color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}.topbar .shell{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:14px;color:#fff;text-decoration:none}.brand-mark{width:38px;height:38px;border-radius:11px;background:var(--red);display:grid;place-items:center;font-size:18px;font-weight:900;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}.wordmark{line-height:.82;font-weight:900;font-size:21px;letter-spacing:-.7px}.wordmark small{display:block;margin-bottom:5px;font-size:9px;letter-spacing:2.2px;color:#f4a8b4}.secure{display:flex;align-items:center;gap:9px;font-size:13px;color:#d9dce2}.secure-dot{width:8px;height:8px;border-radius:50%;background:#35c879;box-shadow:0 0 0 5px rgba(53,200,121,.12)}
+    .hero{position:relative;overflow:hidden;background:#fff;border-bottom:1px solid var(--line)}.hero:before{content:"";position:absolute;inset:0 auto 0 0;width:7px;background:var(--red)}.hero .shell{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:60px;align-items:center;padding-top:48px;padding-bottom:48px}.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--red)}.eyebrow:before{content:"";width:30px;height:2px;background:var(--red)}h1{font-size:clamp(38px,5vw,62px);line-height:1.02;letter-spacing:-.055em;margin:15px 0 17px;max-width:770px}.hero p{margin:0;max-width:720px;color:var(--muted);font-size:18px;line-height:1.7}.group-note{margin-top:22px!important;padding:14px 16px;border-left:3px solid var(--red);background:#fbf1f3;border-radius:0 12px 12px 0;color:#3d424b!important;font-size:14px!important}.group-note strong{color:var(--red-dark)}
+    .steps{display:grid;gap:8px}.step{display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:center;padding:13px 14px;border:1px solid var(--line);border-radius:14px;background:#fafafa;color:#8a9099}.step.active{background:#17191e;border-color:#17191e;color:#fff;box-shadow:0 12px 28px rgba(17,19,24,.15)}.step b{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:#eceef1;font-size:12px;color:#737a84}.step.active b{background:var(--red);color:#fff}.step span{font-size:13px;font-weight:800}.step small{display:block;font-weight:500;color:inherit;opacity:.65}
+    .workspace{padding:42px 0 95px}.workspace-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:28px;align-items:start}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:22px}.kicker{margin:0;color:var(--red);font-size:12px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}.section-head h2,.ranking h2{margin:5px 0 0;font-size:28px;line-height:1.2;letter-spacing:-.03em}.section-head p{margin:6px 0 0;color:var(--muted);font-size:14px}.count{padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:12px;font-weight:800;color:#717781;white-space:nowrap}
+    .toolbar{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:18px}.search{position:relative}.search input{width:100%;height:50px;border:1px solid #dfe2e7;border-radius:15px;background:#fff;padding:0 16px 0 45px;outline:0}.search input:focus{border-color:var(--red);box-shadow:0 0 0 4px rgba(187,0,29,.08)}.search:before{content:"⌕";position:absolute;left:17px;top:6px;color:#8a9099;font-size:25px;transform:rotate(-15deg)}.filters{display:flex;gap:7px;overflow:auto;padding:1px 1px 4px;scrollbar-width:none}.filter{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:800;color:#666d78;white-space:nowrap}.filter.active{background:#17191e;border-color:#17191e;color:#fff}
+    .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.card{position:relative;min-height:166px;border:1px solid var(--line);border-radius:20px;background:#fff;padding:19px;text-align:left;transition:.2s ease;overflow:hidden}.card:hover{transform:translateY(-2px);border-color:#cfd3d9;box-shadow:0 14px 34px rgba(18,21,26,.07)}.card.selected{border-color:var(--red);box-shadow:0 0 0 4px rgba(187,0,29,.09),0 14px 34px rgba(18,21,26,.08)}.card.selected:after{content:"✓";position:absolute;right:15px;top:14px;width:28px;height:28px;border-radius:9px;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:900}.card-top{display:flex;align-items:center;gap:8px}.number{display:grid;place-items:center;width:29px;height:29px;border-radius:9px;background:#f0f1f3;color:#737a84;font-size:11px;font-weight:900}.tag{padding:4px 8px;border-radius:999px;background:#faeef0;color:#9e0018;font-size:10px;font-weight:900}.card h3{font-size:19px;margin:22px 0 6px;letter-spacing:-.02em}.card p{margin:0;color:var(--muted);font-size:13px;line-height:1.55;padding-right:8px}.empty{grid-column:1/-1;padding:38px;border:1px dashed #cfd3d9;border-radius:18px;text-align:center;background:#fff;color:var(--muted)}
+    .ranking{position:sticky;top:22px;border-radius:23px;background:#17191e;color:#fff;padding:24px;box-shadow:var(--shadow);overflow:hidden}.ranking:before{content:"";position:absolute;right:-55px;top:-75px;width:170px;height:170px;border-radius:50%;background:rgba(187,0,29,.38);filter:blur(2px)}.ranking-head{position:relative;display:flex;justify-content:space-between;gap:16px;align-items:start;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.1)}.ranking .kicker{color:#ff7388}.ranking h2{font-size:25px}.live{display:flex;align-items:center;gap:6px;color:#a9efc7;font-size:11px;font-weight:800}.live i{width:7px;height:7px;background:#35c879;border-radius:50%;box-shadow:0 0 0 4px rgba(53,200,121,.12)}.podium{position:relative;display:grid;gap:9px;margin-top:18px}.rank-row{display:grid;grid-template-columns:35px minmax(0,1fr) auto;gap:11px;align-items:center;padding:12px;border-radius:14px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.07)}.rank-row:first-child{background:rgba(187,0,29,.22);border-color:rgba(255,106,129,.24)}.place{display:grid;place-items:center;width:31px;height:31px;border-radius:10px;background:rgba(255,255,255,.1);font-size:12px;font-weight:900}.rank-row:first-child .place{background:var(--red)}.rank-name{min-width:0;font-size:13px;font-weight:850;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rank-meta{font-size:10px;color:#9da3ad}.rank-value{text-align:right}.rank-value b{display:block;font-size:15px}.rank-value small{font-size:10px;color:#9da3ad}.rank-total{position:relative;display:flex;justify-content:space-between;margin-top:18px;padding-top:17px;border-top:1px solid rgba(255,255,255,.1);font-size:12px;color:#aeb3bc}.rank-total strong{color:#fff}.rank-loading{padding:28px 8px;text-align:center;color:#aeb3bc;font-size:13px}
+    .selection{position:fixed;z-index:20;left:50%;bottom:18px;transform:translateX(-50%);width:min(980px,calc(100% - 32px));display:flex;align-items:center;justify-content:space-between;gap:18px;padding:13px 15px 13px 20px;border:1px solid rgba(20,22,27,.1);border-radius:18px;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);box-shadow:0 16px 50px rgba(18,21,26,.16)}.selection small{display:block;color:#7a818c;font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.selected-name{font-weight:900;margin-top:2px}.selection button,.primary{height:48px;border:0;border-radius:13px;background:var(--red);color:#fff;padding:0 22px;font-weight:900;display:inline-flex;align-items:center;gap:10px}.selection button:disabled{background:#d5d8dd;color:#fff;cursor:not-allowed}.selection button:not(:disabled):hover,.primary:hover{background:var(--red-dark)}
+    .modal-backdrop{position:fixed;z-index:50;inset:0;background:rgba(10,12,16,.68);backdrop-filter:blur(6px);display:grid;place-items:center;padding:20px}.modal{width:min(590px,100%);max-height:calc(100vh - 40px);overflow:auto;border-radius:25px;background:#fff;padding:28px;box-shadow:0 30px 90px rgba(0,0,0,.26)}.modal-top{display:flex;justify-content:space-between;gap:18px}.modal h2{font-size:28px;line-height:1.2;margin:5px 0 8px}.modal p{margin:0;color:var(--muted)}.close{border:0;background:#f0f1f3;width:38px;height:38px;border-radius:12px;font-size:20px}.choice-box{margin:22px 0;padding:16px;border-radius:15px;background:#17191e;color:#fff}.choice-box small{color:#b8bdc5;font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.choice-box b{display:block;font-size:20px;margin-top:4px}.form-grid{display:grid;gap:15px}.field{display:grid;gap:7px;font-size:13px;font-weight:800}.field input{height:50px;border:1px solid #dce0e5;border-radius:13px;padding:0 14px;outline:0}.field input:focus{border-color:var(--red);box-shadow:0 0 0 4px rgba(187,0,29,.08)}.check{display:flex;align-items:start;gap:10px;padding:13px;border-radius:12px;background:#f5f6f8;color:#555c67;font-size:12px}.check input{margin-top:3px;accent-color:var(--red)}.primary{justify-content:center;width:100%;height:52px}.primary:disabled{opacity:.6}.error{display:none;padding:11px 13px;border-radius:11px;background:#fff0f1;color:#ad001a;font-size:12px;font-weight:800}.error.show{display:block}.success{text-align:center;padding:12px 0 4px}.success-icon{margin:auto;width:72px;height:72px;display:grid;place-items:center;border-radius:50%;background:#e9f8ef;color:var(--green);font-size:34px;font-weight:900}.success h2{margin-top:20px}.success strong{color:var(--ink)}
+    footer{background:#fff;border-top:1px solid var(--line)}footer .shell{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:18px;color:#707782;font-size:12px}
+    @media(max-width:950px){.hero .shell{grid-template-columns:1fr;gap:28px}.steps{grid-template-columns:repeat(3,1fr)}.step{grid-template-columns:1fr;text-align:center}.step b{margin:auto}.workspace-grid{grid-template-columns:1fr}.ranking{position:relative;top:0;grid-row:1}.vote-panel{grid-row:2}.podium{grid-template-columns:repeat(5,minmax(0,1fr))}.rank-row{grid-template-columns:1fr;text-align:center}.rank-name{white-space:normal}.rank-value{text-align:center}.place{margin:auto}.rank-meta{display:none}}
+    @media(max-width:680px){.shell{width:min(100% - 28px,1240px)}.topbar .shell{height:66px}.secure{font-size:0}.secure:after{content:"Votação segura";font-size:11px}.hero .shell{padding-top:34px;padding-bottom:35px}.hero:before{width:5px}h1{font-size:38px}.hero p{font-size:15px}.steps{display:none}.workspace{padding-top:30px}.section-head{align-items:start}.section-head h2{font-size:24px}.count{display:none}.cards{grid-template-columns:1fr}.card{min-height:145px}.podium{grid-template-columns:1fr}.rank-row{grid-template-columns:35px 1fr auto;text-align:left}.rank-name{white-space:nowrap}.rank-value{text-align:right}.rank-meta{display:block}.selection{bottom:10px}.selection button{padding:0 16px}.selected-name{max-width:170px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}footer .shell{padding:22px 0;display:block}footer span{display:block;margin-top:7px}}
+  </style>
+</head>
+<body>
+  <header class="topbar"><div class="shell">
+    <a class="brand" href="#" aria-label="Grupo Parcele Na Hora">
+      <span class="brand-mark">PNH</span>
+      <span class="wordmark"><small>GRUPO</small>Parcele NA HORA</span>
+    </a>
+    <div class="secure"><span class="secure-dot"></span>Votação interna e segura</div>
+  </div></header>
+
+  <section class="hero"><div class="shell">
+    <div>
+      <div class="eyebrow">Escolha da nova marca</div>
+      <h1>Ajude a escolher o nome da nossa nova empresa</h1>
+      <p>Estamos criando uma nova plataforma de consulta veicular. Conheça as opções e escolha a que melhor representa esse futuro.</p>
+      <p class="group-note"><strong>A Parcele Na Hora não está mudando de nome.</strong> A votação é para uma nova empresa de consultas veiculares que fará parte do Grupo Parcele Na Hora.</p>
+    </div>
+    <div class="steps">
+      <div class="step active"><b>01</b><span>Escolha<small>Compare as opções</small></span></div>
+      <div class="step"><b>02</b><span>Confirme<small>Identifique seu voto</small></span></div>
+      <div class="step"><b>03</b><span>Conclua<small>Voto registrado</small></span></div>
+    </div>
+  </div></section>
+
+  <main class="workspace"><div class="shell workspace-grid">
+    <section class="vote-panel">
+      <div class="section-head"><div><p class="kicker">24 possibilidades</p><h2>Qual nome traduz melhor essa nova empresa?</h2><p>Selecione uma opção. Você poderá revisar antes de confirmar.</p></div><span class="count" id="visibleCount">24 nomes</span></div>
+      <div class="toolbar">
+        <label class="search"><input id="search" type="search" placeholder="Buscar nome ou conceito" aria-label="Buscar nome ou conceito"></label>
+        <div class="filters" id="filters"></div>
+      </div>
+      <div class="cards" id="cards"></div>
+    </section>
+
+    <aside class="ranking">
+      <div class="ranking-head"><div><p class="kicker">Resultado em tempo real</p><h2>Ranking atual</h2></div><span class="live"><i></i>AO VIVO</span></div>
+      <div class="podium" id="ranking"><div class="rank-loading">Carregando votos...</div></div>
+      <div class="rank-total"><span>Total contabilizado</span><strong id="totalVotes">—</strong></div>
+    </aside>
+  </div></main>
+
+  <div class="selection"><div><small>Sua escolha</small><div class="selected-name" id="selectedName">Selecione um nome acima</div></div><button id="continueBtn" disabled>Continuar <span>→</span></button></div>
+
+  <footer><div class="shell"><span>© 2026 Grupo Parcele Na Hora. Votação para definição de nova marca.</span><span>Participação única por e-mail</span></div></footer>
+
+  <div class="modal-backdrop" id="modal" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div id="formView">
+        <div class="modal-top"><div><p class="kicker">Última etapa</p><h2 id="modalTitle">Confirme seu voto</h2><p>Seus dados serão usados somente para garantir uma participação por pessoa.</p></div><button class="close" id="closeModal" aria-label="Fechar">×</button></div>
+        <div class="choice-box"><small>Nome selecionado</small><b id="modalChoice"></b></div>
+        <form class="form-grid" id="voteForm">
+          <label class="field">Nome completo<input id="voterName" autocomplete="name" required placeholder="Digite seu nome"></label>
+          <label class="field">E-mail<input id="voterEmail" type="email" autocomplete="email" required placeholder="voce@empresa.com.br"></label>
+          <label class="field" style="position:absolute;left:-9999px" aria-hidden="true">Não preencher<input id="website" tabindex="-1" autocomplete="off"></label>
+          <label class="check"><input id="consent" type="checkbox" required><span>Confirmo que esta é minha escolha e que estou registrando apenas um voto.</span></label>
+          <div class="error" id="error"></div>
+          <button class="primary" id="submitBtn" type="submit">Confirmar meu voto</button>
+        </form>
+      </div>
+      <div class="success" id="successView" hidden><div class="success-icon">✓</div><p class="kicker">Voto registrado</p><h2>Obrigado por participar!</h2><p>Sua escolha em <strong id="successChoice"></strong> foi confirmada.</p><button class="primary" id="finishBtn" style="margin-top:24px">Voltar à votação</button></div>
+    </section>
+  </div>
+
+<script>
+const SUPABASE_URL="https://flogrdzgadnrjowfksky.supabase.co";
+const SUPABASE_KEY="sb_publishable_rRO3NmIB-Jw5RGWiHe5lrQ_5Wd2DTfm";
+const raw=[
+["DNA Veicular","Identidade completa do veículo, histórico, origem e transparência.","Confiança"],["AutoVision","Visão ampla e inteligente do veículo, com posicionamento tecnológico.","Tecnologia"],["Veículo360","Uma visão completa do veículo em uma única plataforma.","Clareza"],["AutoData","Dados, inteligência e informação confiável para decisões melhores.","Dados"],["AutoCheck","Validação, conferência e segurança antes da compra.","Segurança"],["PNH AutoCheck","Extensão direta da marca Parcele Na Hora para o universo automotivo.","PNH"],["PNH Auto","Nome simples e direto para uma nova vertical automotiva.","PNH"],["PNH Vehicle Intelligence","Posicionamento corporativo para bancos, seguradoras e parceiros.","B2B"],["AutoInsight","Inteligência e análise aplicadas aos dados do veículo.","Tecnologia"],["CarInsight","Apoio inteligente para compra, venda e financiamento.","Tecnologia"],["AutoScore","Potencial para score de risco e análises financeiras.","Dados"],["AutoTrust","Confiança e segurança em cada informação consultada.","Confiança"],["TrustCar","Confiabilidade para comprar e vender veículos.","Confiança"],["Raio-X Veicular","Análise completa do veículo em uma comunicação imediata.","Clareza"],["Histórico Auto","Nome claro e associado à consulta do histórico.","Clareza"],["MeuVeículo","Uma marca próxima, amigável e voltada ao consumidor final.","Consumidor"],["Car360","Abrangência e visão completa do veículo.","Clareza"],["Auto360","Marca escalável para diferentes serviços automotivos.","Inovação"],["CarChain","Tecnologia, rastreabilidade e segurança dos dados.","Tecnologia"],["Veículo Seguro","Associação imediata à prevenção e redução de riscos.","Segurança"],["SmartCar","Tecnologia e inovação aplicadas ao mercado automotivo.","Inovação"],["SmartVehicle","Plataforma tecnológica de inteligência veicular.","Tecnologia"],["AutoHub","Central de dados e serviços do ecossistema automotivo.","Plataforma"],["Vehicle Hub","Marca B2B para conectar parceiros estratégicos.","B2B"]];
+const candidates=raw.map((r,i)=>({name:r[0],description:r[1],category:r[2],index:i+1}));
+let selected="",filter="Todos",query="";
+const el=id=>document.getElementById(id);
+const slug=v=>v.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");
+
+function renderFilters(){
+ const categories=["Todos",...new Set(candidates.map(c=>c.category))];
+ el("filters").innerHTML=categories.map(c=>`<button class="filter ${filter===c?"active":""}" data-filter="${c}">${c}</button>`).join("");
+ document.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{filter=b.dataset.filter;renderFilters();renderCards()});
+}
+function renderCards(){
+ const q=query.trim().toLocaleLowerCase("pt-BR");
+ const list=candidates.filter(c=>(filter==="Todos"||c.category===filter)&&(!q||(`${c.name} ${c.description}`).toLocaleLowerCase("pt-BR").includes(q)));
+ el("visibleCount").textContent=`${list.length} ${list.length===1?"nome":"nomes"}`;
+ el("cards").innerHTML=list.length?list.map(c=>`<button class="card ${selected===c.name?"selected":""}" data-name="${c.name.replace(/"/g,"&quot;")}"><div class="card-top"><span class="number">${String(c.index).padStart(2,"0")}</span><span class="tag">${c.category}</span></div><h3>${c.name}</h3><p>${c.description}</p></button>`).join(""):'<div class="empty">Nenhum nome encontrado para esta busca.</div>';
+ document.querySelectorAll("[data-name]").forEach(b=>b.onclick=()=>selectCandidate(b.dataset.name));
+}
+function selectCandidate(name){selected=name;el("selectedName").textContent=name;el("continueBtn").disabled=false;renderCards()}
+async function rpc(name,body={}){
+ const response=await fetch(`${SUPABASE_URL}/rest/v1/rpc/${name}`,{method:"POST",headers:{apikey:SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify(body)});
+ const data=await response.json().catch(()=>({}));
+ if(!response.ok)throw new Error(data.message||"Não foi possível concluir.");
+ return data;
+}
+async function loadRanking(){
+ try{
+  const rows=await rpc("get_company_name_vote_results");
+  const total=rows.reduce((sum,r)=>sum+Number(r.vote_count),0);
+  const top=rows.slice(0,5);
+  el("totalVotes").textContent=`${total} ${total===1?"voto":"votos"}`;
+  el("ranking").innerHTML=top.map((r,i)=>{const count=Number(r.vote_count),pct=total?Math.round(count/total*100):0;return `<div class="rank-row"><span class="place">${i+1}º</span><div><div class="rank-name">${r.candidate_name}</div><div class="rank-meta">${pct}% do total</div></div><div class="rank-value"><b>${count}</b><small>${count===1?"voto":"votos"}</small></div></div>`}).join("");
+ }catch(e){el("ranking").innerHTML='<div class="rank-loading">Ranking temporariamente indisponível.</div>';el("totalVotes").textContent="—"}
+}
+function openModal(){if(!selected)return;el("modalChoice").textContent=selected;el("modal").hidden=false;document.body.style.overflow="hidden";setTimeout(()=>el("voterName").focus(),50)}
+function closeModal(){el("modal").hidden=true;document.body.style.overflow=""}
+el("search").addEventListener("input",e=>{query=e.target.value;renderCards()});
+el("continueBtn").onclick=openModal;el("closeModal").onclick=closeModal;
+el("modal").onclick=e=>{if(e.target===el("modal"))closeModal()};
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!el("modal").hidden)closeModal()});
+el("voteForm").onsubmit=async e=>{
+ e.preventDefault();const error=el("error");error.classList.remove("show");
+ if(el("website").value)return;
+ const btn=el("submitBtn");btn.disabled=true;btn.textContent="Registrando...";
+ try{
+  await rpc("submit_company_name_vote",{p_candidate_slug:slug(selected),p_voter_name:el("voterName").value.trim(),p_voter_email:el("voterEmail").value.trim().toLowerCase()});
+  el("successChoice").textContent=selected;el("formView").hidden=true;el("successView").hidden=false;await loadRanking();
+ }catch(e){error.textContent=(e.message||"Erro ao registrar o voto.").includes("já votou")?"Este e-mail já participou da votação.":e.message;error.classList.add("show")}
+ finally{btn.disabled=false;btn.textContent="Confirmar meu voto"}
+};
+el("finishBtn").onclick=()=>{closeModal();el("formView").hidden=false;el("successView").hidden=true;el("voteForm").reset();selected="";el("selectedName").textContent="Selecione um nome acima";el("continueBtn").disabled=true;renderCards()};
+renderFilters();renderCards();loadRanking();setInterval(loadRanking,15000);
+</script>
+</body></html>
