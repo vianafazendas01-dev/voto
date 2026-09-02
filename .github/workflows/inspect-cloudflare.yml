@@ -1,59 +1,47 @@
-name: Inspecionar logotipo oficial
+name: Verificar publicação no Cloudflare
 
 on:
   push:
     paths:
       - .github/workflows/inspect-cloudflare.yml
+      - index.html
+      - dist/index.html
 
 permissions:
   contents: read
 
 jobs:
-  inspect:
+  verify:
     runs-on: ubuntu-latest
     steps:
-      - name: Localizar imagem oficial publicada
+      - name: Conferir endereço oficial
         shell: python
         run: |
           from html.parser import HTMLParser
           from urllib.parse import urljoin
           from urllib.request import Request, urlopen
-          import re
+          import time
 
-          url = "https://www.parcelenahora.com.br/quem-somos"
-          def get(target):
-              req = Request(target, headers={"User-Agent": "Mozilla/5.0"})
-              return urlopen(req, timeout=30).read()
+          url = "https://sistemadevotosparcelenahora.pages.dev/"
+          time.sleep(20)
+          req = Request(url, headers={"User-Agent": "Mozilla/5.0", "Cache-Control": "no-cache"})
+          html = urlopen(req, timeout=30).read().decode("utf-8", "replace")
+          print("VERSAO_NOVA", "voto-design-20260902" in html)
 
-          html = get(url).decode("utf-8", "replace")
-          class Inspect(HTMLParser):
+          class Scripts(HTMLParser):
               def __init__(self):
                   super().__init__()
-                  self.assets = []
+                  self.scripts = []
               def handle_starttag(self, tag, attrs):
                   data = dict(attrs)
-                  if tag.lower() == "img" and data.get("src"):
-                      self.assets.append(("img", urljoin(url, data["src"])))
                   if tag.lower() == "script" and data.get("src"):
-                      self.assets.append(("script", urljoin(url, data["src"])))
-                  if tag.lower() == "link" and data.get("href"):
-                      self.assets.append(("link", urljoin(url, data["href"])))
+                      self.scripts.append(urljoin(url, data["src"]))
 
-          parser = Inspect()
+          parser = Scripts()
           parser.feed(html)
-          print("RECURSOS_OFICIAIS")
-          for kind, asset in parser.assets:
-              print(kind, asset)
-              if kind in ("script", "link"):
-                  try:
-                      body = get(asset).decode("utf-8", "replace")
-                  except Exception as exc:
-                      print("erro", type(exc).__name__)
-                      continue
-                  matches = sorted(set(re.findall(r'https?://[^"\x27 )]+|/[A-Za-z0-9_./-]+\.(?:png|webp|svg|jpe?g)', body, flags=re.I)))
-                  image_matches = [m for m in matches if re.search(r'\.(?:png|webp|svg|jpe?g)(?:\?|$)', m, flags=re.I)]
-                  if image_matches:
-                      print("imagens_no_recurso", image_matches[:100])
-                  data_images = re.findall(r'data:image/(png|webp|jpeg);base64,([A-Za-z0-9+/=]+)', body)
-                  if data_images:
-                      print("imagens_incorporadas", [(mime, len(data)) for mime, data in data_images[:20]])
+          for script in parser.scripts:
+              try:
+                  response = urlopen(Request(script, headers={"User-Agent": "Mozilla/5.0"}), timeout=20)
+                  print("SCRIPT", response.status, script)
+              except Exception as exc:
+                  print("SCRIPT_ERRO", type(exc).__name__, script)
