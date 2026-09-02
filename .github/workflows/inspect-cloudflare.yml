@@ -1,4 +1,4 @@
-name: Inspecionar versão atual do Cloudflare
+name: Inspecionar logotipo oficial
 
 on:
   push:
@@ -12,49 +12,29 @@ jobs:
   inspect:
     runs-on: ubuntu-latest
     steps:
-      - name: Ler somente estrutura pública
+      - name: Localizar imagem oficial publicada
         shell: python
         run: |
           from html.parser import HTMLParser
           from urllib.parse import urljoin
           from urllib.request import Request, urlopen
-          import re
 
-          url = "https://sistemadevotosparcelenahora.pages.dev/"
-          def get(target):
-              req = Request(target, headers={"User-Agent": "Mozilla/5.0"})
-              return urlopen(req, timeout=20).read()
+          url = "https://www.parcelenahora.com.br/quem-somos"
+          req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
+          html = urlopen(req, timeout=20).read().decode("utf-8", "replace")
 
-          html = get(url).decode("utf-8", "replace")
           class Inspect(HTMLParser):
               def __init__(self):
                   super().__init__()
-                  self.assets = []
-                  self.text = []
+                  self.images = []
               def handle_starttag(self, tag, attrs):
                   data = dict(attrs)
                   if tag.lower() == "img" and data.get("src"):
-                      self.assets.append(("img", urljoin(url, data["src"])))
-                  if tag.lower() == "script" and data.get("src"):
-                      self.assets.append(("script", urljoin(url, data["src"])))
-                  if tag.lower() == "link" and data.get("href"):
-                      self.assets.append(("link", urljoin(url, data["href"])))
-              def handle_data(self, data):
-                  value = " ".join(data.split())
-                  if value:
-                      self.text.append(value)
+                      self.images.append((data.get("alt", ""), urljoin(url, data["src"])))
 
           parser = Inspect()
           parser.feed(html)
-          print("RECURSOS")
-          for kind, asset in parser.assets:
-              print(kind, asset)
-              if kind == "script":
-                  js = get(asset).decode("utf-8", "replace")
-                  print("script_bytes", len(js.encode("utf-8")))
-                  paths = sorted(set(re.findall(r'[^"\x27]{0,80}\.(?:png|webp|svg|jpe?g)', js, flags=re.I)))
-                  print("image_paths", paths[:30])
-                  data_images = re.findall(r'data:image/(png|webp|jpeg);base64,([A-Za-z0-9+/=]+)', js)
-                  print("data_images", [(mime, len(data)) for mime, data in data_images[:20]])
-          print("TEXTOS_HTML")
-          print(" | ".join(parser.text)[:5000])
+          print("IMAGENS_OFICIAIS")
+          for alt, src in parser.images:
+              safe_src = src if not src.startswith("data:") else src[:80] + "...[dados incorporados]"
+              print(f"alt={alt!r} src={safe_src!r}")
