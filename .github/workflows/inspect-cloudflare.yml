@@ -18,23 +18,42 @@ jobs:
           from html.parser import HTMLParser
           from urllib.parse import urljoin
           from urllib.request import Request, urlopen
+          import re
 
           url = "https://www.parcelenahora.com.br/quem-somos"
-          req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
-          html = urlopen(req, timeout=20).read().decode("utf-8", "replace")
+          def get(target):
+              req = Request(target, headers={"User-Agent": "Mozilla/5.0"})
+              return urlopen(req, timeout=30).read()
 
+          html = get(url).decode("utf-8", "replace")
           class Inspect(HTMLParser):
               def __init__(self):
                   super().__init__()
-                  self.images = []
+                  self.assets = []
               def handle_starttag(self, tag, attrs):
                   data = dict(attrs)
                   if tag.lower() == "img" and data.get("src"):
-                      self.images.append((data.get("alt", ""), urljoin(url, data["src"])))
+                      self.assets.append(("img", urljoin(url, data["src"])))
+                  if tag.lower() == "script" and data.get("src"):
+                      self.assets.append(("script", urljoin(url, data["src"])))
+                  if tag.lower() == "link" and data.get("href"):
+                      self.assets.append(("link", urljoin(url, data["href"])))
 
           parser = Inspect()
           parser.feed(html)
-          print("IMAGENS_OFICIAIS")
-          for alt, src in parser.images:
-              safe_src = src if not src.startswith("data:") else src[:80] + "...[dados incorporados]"
-              print(f"alt={alt!r} src={safe_src!r}")
+          print("RECURSOS_OFICIAIS")
+          for kind, asset in parser.assets:
+              print(kind, asset)
+              if kind in ("script", "link"):
+                  try:
+                      body = get(asset).decode("utf-8", "replace")
+                  except Exception as exc:
+                      print("erro", type(exc).__name__)
+                      continue
+                  matches = sorted(set(re.findall(r'https?://[^"\x27 )]+|/[A-Za-z0-9_./-]+\.(?:png|webp|svg|jpe?g)', body, flags=re.I)))
+                  image_matches = [m for m in matches if re.search(r'\.(?:png|webp|svg|jpe?g)(?:\?|$)', m, flags=re.I)]
+                  if image_matches:
+                      print("imagens_no_recurso", image_matches[:100])
+                  data_images = re.findall(r'data:image/(png|webp|jpeg);base64,([A-Za-z0-9+/=]+)', body)
+                  if data_images:
+                      print("imagens_incorporadas", [(mime, len(data)) for mime, data in data_images[:20]])
